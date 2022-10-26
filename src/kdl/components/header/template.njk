@@ -2,11 +2,7 @@
 
 {% block component %}
 <div class="kdl-header:title">
-  {% if kwargs.url %}
-  <a class="kdl-header:link" href="{{ kwargs.url }}">{{ kwargs.title }}</a>
-  {% else %}
-  {{- kwargs.title -}}
-  {% endif %}
+  <a class="kdl-header:link" href="{{ kwargs.url | default('/') }}">{{ kwargs.title }}</a>
 </div>
 {% if kwargs.logo %}
 <div class="kdl-header:logo">
