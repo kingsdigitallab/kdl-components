@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ htmlLang | default('en') }}" {%- if htmlClass -%}class="{{ htmlClass }}" {%- endif -%}>
 
 <head>
+  {# based on https://html5boilerplate.com/ #}
   <meta charset="utf-8">
   {% if headTitle %}<title>{{ headTitle }}</title>{% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,11 +12,17 @@
 
   {% block headMeta %}{% endblock %}
 
+  {% block headIcons %}
+  <link rel="icon" href="{{ assetsPath | default('/assets') }}/images/favicon.ico" sizes="any">
+  <link rel="icon" href="{{ assetsPath | default('/assets') }}/images/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ assetsPath | default('/assets') }}/images/icon.png">
+  {% endblock %}
+
   {% block stylesheets %}
   <link href="{{ assetsPath | default('/assets') }}/stylesheets/main.css" rel="stylesheet">
   {% endblock %}
 
-  <meta name="theme-color" content="{{ metaThemeColor | default('#c7ccdb') }}">
+  <meta name="theme-color" content="{{ metaThemeColor | default('#d16014') }}">
 </head>
 
 <body {%- if bodyClass -%}class="{{ bodyClass }}" {%- endif -%}>
