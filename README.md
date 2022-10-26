@@ -56,6 +56,6 @@ templates:
 
 ## Components
 
-For details about the individual components see the individual components documentation:
+For details about the components see the individual components documentation:
 
-- [header](src/kdl/components/header/README.md)
+- [header](src/kdl/components/header)
