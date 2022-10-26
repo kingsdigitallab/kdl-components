@@ -1,0 +1,8 @@
+{% if params.html %}
+{% block componentHtml %}
+{{ params.html | safe }}
+{% endblock %}
+{% else %}
+{% block component %}
+{% endblock %}
+{% endif %}

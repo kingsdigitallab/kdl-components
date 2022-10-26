@@ -1,0 +1,16 @@
+{% extends "../../component.njk" %}
+
+{% block component %}
+<div class="kdl-header:title">
+  {% if params.url %}
+  <a class="kdl-header:link" href="{{ params.url }}">{{ params.title }}</a>
+  {% else %}
+  {{- params.title -}}
+  {% endif %}
+</div>
+{% if params.logo %}
+<div class="kdl-header:logo">
+  <img src="{{ params.logo.src }}" alt="{{ params.logo.alt }}">
+</div>
+{% endif %}
+{% endblock %}

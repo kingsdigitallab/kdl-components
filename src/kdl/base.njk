@@ -1,3 +1,4 @@
+{% from "./components/header/macros.njk" import "headerMacro" %}
 <!doctype html>
 <html lang="{{ htmlLang | default('en') }}" {%- if htmlClass -%}class="{{ htmlClass }}" {%- endif -%}>
 
@@ -30,6 +31,10 @@
 
   {% block header %}
   <header {%- if headerClass -%}class="{{ headerClass }}" {%- endif -%}>
+    {% block headerMain %}
+    {{ headerMacro({}) }}
+    {% endblock %}
+    {% block headerNav %}{% endblock %}
     {% block headerSearch %}{% endblock %}
   </header>
   {% endblock %}
