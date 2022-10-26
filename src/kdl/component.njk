@@ -1,6 +1,6 @@
-{% if params.html %}
+{% if kwargs.html %}
 {% block componentHtml %}
-{{ params.html | safe }}
+{{ kwargs.html | safe }}
 {% endblock %}
 {% else %}
 {% block component %}

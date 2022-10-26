@@ -2,15 +2,15 @@
 
 {% block component %}
 <div class="kdl-header:title">
-  {% if params.url %}
-  <a class="kdl-header:link" href="{{ params.url }}">{{ params.title }}</a>
+  {% if kwargs.url %}
+  <a class="kdl-header:link" href="{{ kwargs.url }}">{{ kwargs.title }}</a>
   {% else %}
-  {{- params.title -}}
+  {{- kwargs.title -}}
   {% endif %}
 </div>
-{% if params.logo %}
+{% if kwargs.logo %}
 <div class="kdl-header:logo">
-  <img src="{{ params.logo.src }}" alt="{{ params.logo.alt }}">
+  <img src="{{ kwargs.logo.src }}" alt="{{ kwargs.logo.alt }}">
 </div>
 {% endif %}
 {% endblock %}
