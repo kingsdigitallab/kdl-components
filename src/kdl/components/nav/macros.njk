@@ -1,0 +1,35 @@
+{% macro navMacro(kwargs) %}
+  {%- include "./template.njk" -%}
+{% endmacro %}
+
+{#
+| Name | Type | Description |
+| --------- | ------ | ------------------------------------------- |
+| **item** | object | Navigation item. |
+| **currentUrl** | string | URL of the current page, used for active status. |
+| activeClass | string | Class names for active item, default is `active`. |
+| nested | boolean | If true render children, otherwise only top level items. |
+| listTag | string | Tag to render the list for children. |
+#}
+{%- macro navItemMacro(kwargs) %}
+{% set item = kwargs.item %}
+<li {% if item.url==kwargs.currentUrl -%} class="{{ kwargs.activeClass | default('active') }}"{%- endif -%}>
+  {%- if item.children.length and kwargs.nested %}
+  {{ item.title }}
+  <{{ kwargs.listTag }}>
+    {%- for child in item.children -%}
+    {{
+      navItemMacro({
+        item: child,
+        currentUrl: kwargs.currentUrl,
+        nested: kwargs.nested,
+        listTag: kwargs.listTag
+      })
+    }}
+    {%- endfor %}
+  </{{ kwargs.listTag }}>
+  {%- else %}
+  <a href="{{ item.url }}">{{ item.title }}</a>
+  {%- endif %}
+</li>
+{%- endmacro %}
