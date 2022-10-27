@@ -10,12 +10,12 @@
 #}
 
 {% block component %}
-<div class="kdl-header__title">
-  <a class="kdl-header__link" href="{{ kwargs.url | default('/') }}">{{ kwargs.title }}</a>
-</div>
-{% if kwargs.logo %}
-<div class="kdl-header__logo">
-  <img src="{{ kwargs.logo.src }}" alt="{{ kwargs.logo.alt }}">
-</div>
-{% endif %}
+  <div class="kdl-header-title">
+    <a class="kdl-header-link" href="{{ kwargs.url | default('/') }}">{{ kwargs.title }}</a>
+  </div>
+  {% if kwargs.logo %}
+    <div class="kdl-header-logo">
+      <img src="{{ kwargs.logo.src }}" alt="{{ kwargs.logo.alt }}">
+    </div>
+  {% endif %}
 {% endblock %}
