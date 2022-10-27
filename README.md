@@ -59,3 +59,4 @@ templates:
 For details about the components see the individual components documentation:
 
 - [header](src/kdl/components/header)
+- [navigation](src/kdl/components/nav)
