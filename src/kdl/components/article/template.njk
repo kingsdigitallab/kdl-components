@@ -1,0 +1,46 @@
+{% extends "../../component.njk" %}
+
+{#
+| Name                | Type     | Description                           |
+| ------------------- | -------- | ------------------------------------- |
+| class               | string   | Class name for the `article` element. |
+| title               | string   | Article tile.                         |
+| url                 | string   | Article URL.                          |
+| link                | string   | Add link to article.                  |
+| **content**         | markdown | Content to display.                   |
+| feature.image       | url      | Feature image URL.                    |
+| feature.description | str      | Feature image description.            |
+| **authors**         | array    | An array with person objects.         |
+| **date.obj**        | date     | Date of the post.                     |
+| date.str            | string   | Date formatted for display.           |
+#}
+
+{% block component %}
+<article class="kdl-article {% if class -%}{{ class}}{%- endif -%}">
+  <header class="kdl-post-header">
+    {% if link %}
+      <a href="{{ kwargs.url }}">
+        <h2>{{ kwargs.title }}</h2>
+      </a>
+    {% endif %}
+    {% if kwargs.feature and kwargs.feature.image %}
+      <figure>
+        <img src="{{ kwargs.feature.image }}" alt="{{ kwargs.feature.description }}">
+        <figcaption>{{ kwargs.feature.description }}</figcaption>
+      </figure>
+    {% endif %}
+  </header>
+  <footer class="kdl-post-footer">
+    by
+    {% for author in kwargs.authors %}
+      <span class="author"><a href="{{ author.url }}">{{ author.name }}</a></span>
+      {%- if not forloop.last -%},{%- endif -%}
+    {% endfor %}
+    on
+    <time datetime="{{ kwargs.date.obj }}" class="datetime">
+      {%- if kwargs.date.str -%}{{ kwargs.date.str }}{% else %}{{ kwargs.date.obj }}{%- endif -%}
+    </time>
+  </footer>
+  {{ kwargs.content }}
+</article>
+{% endblock component %}
