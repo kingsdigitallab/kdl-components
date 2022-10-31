@@ -1,8 +1,7 @@
 {% if kwargs.html %}
-{% block componentHtml %}
-{{ kwargs.html | safe }}
-{% endblock %}
+  {% block componentHtml %}
+    {{ kwargs.html | safe }}
+  {% endblock componentHtml %}
 {% else %}
-{% block component %}
-{% endblock %}
+  {% block component %}{% endblock component %}
 {% endif %}
