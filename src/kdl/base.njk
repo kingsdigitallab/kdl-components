@@ -10,7 +10,10 @@
       <title>{{ headTitle }}</title>
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="{{ metaCompatible | default('IE=edge') }}"> {% block headExtra %}{% endblock %}{% block headMeta %}{% endblock %}
+    <meta http-equiv="X-UA-Compatible" content="{{ metaCompatible | default('IE=edge') }}">
+
+    {% block headExtra %}{% endblock %}
+    {% block headMeta %}{% endblock %}
 
     {% block headIcons %}
       <link rel="icon" href="{{ assetsPath | default('/assets') }}/images/favicon.ico" sizes="any">
