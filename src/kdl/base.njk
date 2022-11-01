@@ -28,7 +28,8 @@
     <meta name="theme-color" content="{{ metaThemeColor | default('#d16014') }}">
   </head>
 
-  <body {%- if bodyClass -%} class="{{ bodyClass }}" {%- endif -%}> {% block bodyStart %}{% endblock %}
+  <body {%- if bodyClass -%} class="{{ bodyClass }}" {%- endif -%}>
+    {% block bodyStart %}{% endblock %}
 
     {% block header %}
       <header {%- if headerClass -%} class="{{ headerClass }}" {%- endif -%}>
