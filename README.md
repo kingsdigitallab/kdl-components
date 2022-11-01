@@ -6,13 +6,14 @@ Install this package:
 
 `npm install --save-dev git+https://github.com/kingsdigitallab/kdl-components.git`
 
-Install nunjucks if not available in the project:
+Install [nunjucks](https://mozilla.github.io/nunjucks/) if not available in the project:
 
 `npm install --save-dev nunjucks`
 
 Configure `nunjucks`:
 
 ```javascript
+const kdlFilters = require("kdl-components/src/kdl/filters")
 const nunjucks = require("nunjucks");
 
 const kdlComponentsPath = "../node_modules/kdl-components/src";
@@ -27,7 +28,7 @@ const nunjucksEnvironment = new nunjucks.Environment([
 
 ### 11ty
 
-Edit `.eleventy.js`:
+Add configuration to `.eleventy.js`:
 
 ```javascript
 module.exports = (eleventyConfig) => {
@@ -43,8 +44,22 @@ module.exports = (eleventyConfig) => {
     public: "/",
   });
 
+  # kdl components filters
+  eleventyConfig.addFilter("toLocaleDate", kdlFilters.toLocaleDate);
+  eleventyConfig.addFilter("filter", kdlFilters.filter);
+
   # rest of 11ty configuration
 }
+```
+
+Add `obj` to `_data/eleventyComputed.js`:
+
+```javascript
+module.exports = {
+  obj: (data) => data,
+  ...
+};
+
 ```
 
 ## Templates
