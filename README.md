@@ -79,4 +79,9 @@ For details about the individual components see their documentation:
 
 - [article](src/kdl/components/article)
 - [header](src/kdl/components/header)
+- [image](src/kdl/components/image)
+- [link](src/kdl/components/link)
 - [navigation](src/kdl/components/nav)
+- [person](src/kdl/components/person)
+- [time](src/kdl/components/time)
+- [utils](src/kdl/components/utils)
