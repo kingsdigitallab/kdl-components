@@ -1,5 +1,5 @@
 {% macro navMacro(data, options) %}
-  {%- include "./template.njk" -%}
+  {%- include "./nav.njk" -%}
 {% endmacro %}
 
 {#
@@ -14,3 +14,7 @@
 {%- macro navItemMacro(data, options) %}
   {% include "./navItem.njk" %}
 {%- endmacro %}
+
+{% macro paginationMacro(data, options) %}
+  {%- include "./pagination.njk" -%}
+{% endmacro %}
