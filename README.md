@@ -71,7 +71,11 @@ templates:
 
 ## Components
 
-For details about the components see the individual components documentation:
+Each component is implemented using a combination of macros and templates. The macros
+take at most two objects as arguments, the first object is the data for the component,
+the second, optional, object rendering options.
+
+For details about the individual components see their documentation:
 
 - [article](src/kdl/components/article)
 - [header](src/kdl/components/header)
