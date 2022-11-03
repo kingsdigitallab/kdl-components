@@ -1,21 +1,12 @@
 {% extends "../../component.njk" %}
 
-{#
-| Name      | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| **title** | string | The header title.                           |
-| logo.src  | string | Path to the logo image.                     |
-| logo.alt  | string | Logo image alt text.                        |
-| url       | string | URL to link the header to, defaults to `/`. |
-#}
-
 {% block component %}
-  <div class="kdl-header-title">
-    <a class="kdl-header-link" href="{{ kwargs.url | default('/') }}">{{ kwargs.title }}</a>
+  <div>
+    <a href="{{ kwargs.url | default('/') }}">{{ kwargs.title }}</a>
   </div>
-  {% if kwargs.logo %}
-    <div class="kdl-header-logo">
-      <img src="{{ kwargs.logo.src }}" alt="{{ kwargs.logo.alt }}">
+  {% if kwargs.feature %}
+    <div>
+      <img src="{{ kwargs.feature.image }}" alt="{{ kwargs.feature.description }}">
     </div>
   {% endif %}
-{% endblock %}
+{% endblock component %}

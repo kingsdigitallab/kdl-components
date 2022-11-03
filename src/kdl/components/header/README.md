@@ -8,9 +8,9 @@
 {{
   headerMacro({
     title: "My title",
-    logo: {
-      src: "/path/to/logo.svg",
-      alt: "Image alt"
+    feature: {
+      image: "/path/to/logo.svg",
+      description: "Image alt"
     },
     url: "/"
   })
@@ -19,9 +19,9 @@
 
 ## Arguments
 
-| Name      | Type   | Description                                 |
-| --------- | ------ | ------------------------------------------- |
-| **title** | string | The header title.                           |
-| logo.src  | string | Path to the logo image.                     |
-| logo.alt  | string | Logo image alt text.                        |
-| url       | string | URL to link the header to, defaults to `/`. |
+| Name                | Type   | Description                                 |
+| ------------------- | ------ | ------------------------------------------- |
+| **title**           | string | The header title.                           |
+| **url**             | string | URL to link the header to, defaults to `/`. |
+| feature.image       | string | Path to the feature image.                  |
+| feature.description | string | Feature image description.                  |
