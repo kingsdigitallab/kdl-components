@@ -2,11 +2,11 @@
 
 {% block component %}
   <div>
-    <a href="{{ kwargs.url | default('/') }}">{{ kwargs.title }}</a>
+    <a href="{{ data.url | default('/') }}">{{ data.title }}</a>
   </div>
-  {% if kwargs.feature %}
+  {% if data.feature %}
     <div>
-      <img src="{{ kwargs.feature.image }}" alt="{{ kwargs.feature.description }}">
+      <img src="{{ data.feature.image }}" alt="{{ data.feature.description }}">
     </div>
   {% endif %}
 {% endblock component %}

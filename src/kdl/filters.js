@@ -6,7 +6,7 @@ function toLocaleDate(dateObj) {
 }
 
 function filter(collection, values, path) {
-  if (values instanceof String) {
+  if (!(values instanceof Array)) {
     values = [values];
   }
 

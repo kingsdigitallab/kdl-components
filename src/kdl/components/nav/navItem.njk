@@ -1,0 +1,20 @@
+{% set page = data.page %}
+<li {% if page.url==data.currentUrl -%} class="{{ options.activeClass | default('active') }}"{%- endif -%}>
+  {%- if page.children.length and options.nested %}
+  {{ page.title }}
+  <{{ options.listTag }}>
+    {%- for child in page.children -%}
+    {{
+      navItemMacro({
+        page: child,
+        currentUrl: data.currentUrl,
+        nested: options.nested,
+        listTag: options.listTag
+      })
+    }}
+    {%- endfor %}
+  </{{ options.listTag }}>
+  {%- else %}
+  <a href="{{ page.url }}">{{ page.title }}</a>
+  {%- endif %}
+</li>

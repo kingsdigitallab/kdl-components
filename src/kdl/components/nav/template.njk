@@ -1,31 +1,20 @@
 {% extends "../../component.njk" %}
 {% from "./macros.njk" import navItemMacro %}
 
-{#
-| Name | Type | Description |
-| --------- | ------ | ------------------------------------------- |
-| **title** | string | The navigation title. |
-| **items** | array | Navigation items. |
-| **currentUrl** | string  | URL of the current page, used for active status.         |
-| class | string | Class name for the `nav` element. |
-| activeClass | string  | Class names for active item, default is `active`.        |
-| nested | boolean | If true render children, otherwise only top level items. |
-| ordered | boolean | If true use ol, otherwise ul. |
-#}
 {% block component %}
-{% set listTag = "ol" if kwargs.ordered else "ul" %}
-
+{% set listTag = "ol" if options.ordered else "ul" %}
 <nav
-    class="kdl-nav {%- if kwargs.class %}{{ kwargs.class }}{%- endif -%}"
-    aria-label="{{ kwargs.title }}">
-  <h2 class="kdl-visually-hidden">{{ kwargs.title }}</h2>
+    class="kdl-nav {%- if options.class %}{{ options.class }}{%- endif -%}"
+    aria-label="{{ data.title }}">
+  <h2 class="kdl-visually-hidden">{{ data.title }}</h2>
   <{{ listTag }}>
-    {% for item in kwargs.items %}
+    {% for page in data.pages %}
     {{
       navItemMacro({
-        item: item,
-        currentUrl: kwargs.currentUrl,
-        nested: kwargs.nested,
+        page: page,
+        currentUrl: data.currentUrl
+      }, {
+        nested: options.nested,
         listTag: listTag
       })
     }}
