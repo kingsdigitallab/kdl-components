@@ -4,10 +4,11 @@
 {% from "../link/macros.njk" import linkMacro %}
 {% from "../person/macros.njk" import authorMacro %}
 {% from "../time/macros.njk" import timeMacro %}
+{% from "../utils/macros.njk" import classAttributeMacro %}
 
 {% block component %}
-<article {%- if options.class -%} class="{{ options.class }}"{%- endif -%}>
-  <header class="kdl-post-header">
+<article {{- classAttributeMacro(options.class) -}}>
+  <header>
     {% if options.addLink %}
       {% set html %}<h2>{{ data.title }}</h2>{% endset %}
       {{ linkMacro(data, { html: html }) }}
@@ -16,7 +17,7 @@
       {{- imageMacro(data.feature) -}}
     {% endif %}
   </header>
-  <footer class="kdl-post-footer">
+  <footer>
     by
     {% for person in data.collections.people | filter(data.authors, "data.id") %}
       {{- authorMacro(person) -}}

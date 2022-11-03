@@ -1,7 +1,9 @@
-{% from "./components/header/macros.njk" import "headerMacro" %}
-{% from "./components/nav/macros.njk" import "navMacro" %}
+{% from "./components/header/macros.njk" import headerMacro %}
+{% from "./components/nav/macros.njk" import navMacro %}
+{% from "./components/utils/macros.njk" import classAttributeMacro %}
+
 <!doctype html>
-<html lang="{{ htmlLang | default('en') }}" {%- if htmlClass -%} class="{{ htmlClass }}" {%- endif -%}>
+<html lang="{{ htmlLang | default('en') }}" {{- classAttributeMacro(htmlClass) -}}>
 
   <head>
     {# based on https://html5boilerplate.com/ #}
@@ -28,11 +30,11 @@
     <meta name="theme-color" content="{{ metaThemeColour | default('#d16014') }}">
   </head>
 
-  <body {%- if bodyClass -%} class="{{ bodyClass }}" {%- endif -%}>
+  <body {{- classAttributeMacro(bodyClass) -}}>
     {% block bodyStart %}{% endblock bodyStart %}
 
     {% block header %}
-      <header {%- if headerClass -%} class="{{ headerClass }}" {%- endif -%}>
+      <header {{- classAttributeMacro(headerClass) -}}>
         {% block headerMain %}
           {{ headerMacro({}) }}
         {% endblock headerMain %}
@@ -44,7 +46,7 @@
     {% endblock header %}
 
     {% block main %}
-      <main {%- if mainClass -%} class="{{ mainClass }}" {%- endif -%} {%- if mainLang -%} lang="{{ mainLang }}" {%- endif -%}>
+      <main {{- classAttributeMacro(mainClass) -}} {%- if mainLang -%} lang="{{ mainLang }}" {%- endif -%}>
         {% block content %}{% endblock content %}
       </main>
     {% endblock main %}
