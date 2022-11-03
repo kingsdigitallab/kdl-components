@@ -12,46 +12,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="{{ metaCompatible | default('IE=edge') }}">
 
-    {% block headExtra %}{% endblock %}
-    {% block headMeta %}{% endblock %}
+    {% block headExtra %}{% endblock headExtra %}
+    {% block headMeta %}{% endblock headMeta %}
 
     {% block headIcons %}
-      <link rel="icon" href="{{ assetsPath | default('/assets') }}/images/favicon.ico" sizes="any">
-      <link rel="icon" href="{{ assetsPath | default('/assets') }}/images/icon.svg" type="image/svg+xml">
-      <link rel="apple-touch-icon" href="{{ assetsPath | default('/assets') }}/images/icon.png">
-    {% endblock %}
+      <link rel="icon" href="{{ imagesPath | default('/assets/images') }}/favicon.ico" sizes="any">
+      <link rel="icon" href="{{ imagesPath | default('/assets/images') }}/icon.svg" type="image/svg+xml">
+      <link rel="apple-touch-icon" href="{{ imagesPath | default('/assets/images') }}/icon.png">
+    {% endblock headIcons %}
 
     {% block stylesheets %}
-      <link href="{{ assetsPath | default('/assets') }}/stylesheets/main.css" rel="stylesheet">
-    {% endblock %}
+      <link href="{{ stylesheetsPath | default('/assets/stylesheets') }}/main.css" rel="stylesheet">
+    {% endblock stylesheets %}
 
-    <meta name="theme-color" content="{{ metaThemeColor | default('#d16014') }}">
+    <meta name="theme-color" content="{{ metaThemeColour | default('#d16014') }}">
   </head>
 
   <body {%- if bodyClass -%} class="{{ bodyClass }}" {%- endif -%}>
-    {% block bodyStart %}{% endblock %}
+    {% block bodyStart %}{% endblock bodyStart %}
 
     {% block header %}
       <header {%- if headerClass -%} class="{{ headerClass }}" {%- endif -%}>
         {% block headerMain %}
           {{ headerMacro({}) }}
-        {% endblock %}
+        {% endblock headerMain %}
         {% block menu %}
           {{ navMacro({}) }}
-        {% endblock %}
-        {% block headerSearch %}{% endblock %}
+        {% endblock menu %}
+        {% block headerSearch %}{% endblock headerSearch %}
       </header>
-    {% endblock %}
+    {% endblock header %}
 
     {% block main %}
       <main {%- if mainClass -%} class="{{ mainClass }}" {%- endif -%} {%- if mainLang -%} lang="{{ mainLang }}" {%- endif -%}>
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock content %}
       </main>
-    {% endblock %}
+    {% endblock main %}
 
-    {% block footer %}{% endblock %}
+    {% block footer %}{% endblock footer %}
 
-    {% block bodyEnd %}{% endblock %}
+    {% block bodyEnd %}{% endblock bodyEnd %}
   </body>
 
 </html>
