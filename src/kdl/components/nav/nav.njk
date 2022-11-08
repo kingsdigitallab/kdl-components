@@ -1,23 +1,24 @@
 {% extends "../../component.njk" %}
+
 {% from "./macros.njk" import navItemMacro %}
 {% from "../utils/macros.njk" import classAttributeMacro, visuallyHiddenMacro %}
 
 {% block component %}
-{% set listTag = "ol" if options.ordered else "ul" %}
-<nav {{ classAttributeMacro(options.class) -}} aria-label="{{ data.title }}">
-  {{ visuallyHiddenMacro("h2", data.title) }}
-  <{{ listTag }}>
+  {% set listTag = "ol" if options.ordered else "ul" %}
+  <nav {{ classAttributeMacro(options.class) -}} aria-label="{{ data.title }}">
+    {{ visuallyHiddenMacro("h2", data.title) }}
+    <{{ listTag }}>
     {% for page in data.pages %}
-    {{
+      {{
       navItemMacro({
-        page: page,
-        currentUrl: data.currentUrl
+      page: page,
+      currentUrl: data.currentUrl
       }, {
-        nested: options.nested,
-        listTag: listTag
+      nested: options.nested,
+      listTag: listTag
       })
-    }}
+      }}
     {% endfor %}
-  </{{ listTag }}>
-</nav>
-{% endblock %}
+    </{{ listTag }}>
+  </nav>
+{% endblock component %}

@@ -1,0 +1,19 @@
+{% extends "../../component.njk" %}
+
+{% from "./macros.njk" import navItemMacro %}
+{% from "../utils/macros.njk" import classAttributeMacro %}
+
+{% block component %}
+  <nav {{ classAttributeMacro(options.class) -}} aria-label="breadcrumbs">
+    <ol>
+      {% for page in data.pages %}
+        <li>
+          <a href="{{ page.url }}"
+             {% if loop.last -%}
+             aria-current="page"
+             {%- endif -%}>{{ page.title }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endblock component %}

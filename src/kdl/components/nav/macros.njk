@@ -1,7 +1,6 @@
 {% macro navMacro(data, options) %}
   {%- include "./nav.njk" -%}
 {% endmacro %}
-
 {#
 | Name | Type | Description |
 | --------- | ------ | ------------------------------------------- |
@@ -13,8 +12,13 @@
 #}
 {%- macro navItemMacro(data, options) %}
   {% include "./navItem.njk" %}
+
 {%- endmacro %}
 
 {% macro paginationMacro(data, options) %}
   {%- include "./pagination.njk" -%}
+{% endmacro %}
+
+{% macro breadcrumbsMacro(data, options) %}
+  {%- include "./breadcrumbs.njk" -%}
 {% endmacro %}
