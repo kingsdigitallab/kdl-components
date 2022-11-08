@@ -7,26 +7,26 @@
 {% from "../utils/macros.njk" import classAttributeMacro %}
 
 {% block component %}
-<article {{- classAttributeMacro(options.class) -}}>
-  <header>
-    {% if options.addLink %}
-      {% set html %}<h2>{{ data.title }}</h2>{% endset %}
+  <article {{- classAttributeMacro(options.class) -}}>
+    <header>
+      {% if options.addLink %}
+        {% set html %}
+        <h2>{{ data.title }}</h2>
+      {% endset %}
       {{ linkMacro(data, { html: html }) }}
     {% endif %}
-    {% if data.feature and data.feature.image %}
-      {{- imageMacro(data.feature) -}}
-    {% endif %}
+    {% if data.feature and data.feature.image %}{{- imageMacro(data.feature) -}}{% endif %}
   </header>
   <footer>
     by
     {% for person in data.collections.people | filter(data.authors, "data.id") %}
       {{- authorMacro(person) -}}
       {%- if not loop.last -%},{%- endif -%}
-    {% endfor %}
-    on
-    {{ timeMacro(data.date) -}}
-  </footer>
-  {% set content = data[options.contentField] if options.contentField else data.content %}
-  {{ content | safe }}
-</article>
+      {% endfor %}
+      on
+      {{ timeMacro(data.date) -}}
+    </footer>
+    {% set content = data[options.contentField] if options.contentField else data.content %}
+    {{ content | safe }}
+  </article>
 {% endblock component %}
