@@ -1,6 +1,6 @@
 {
   "name": "kdl-components",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "KDL components",
   "homepage": "https://github.com/kingsdigitallab/kdl-components#readme",
   "repository": {
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
     "@babel/eslint-plugin": "^7.17.7",
+    "@release-it/keep-a-changelog": "^3.1.0",
     "djlint": "^1.19.4",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
