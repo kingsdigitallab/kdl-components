@@ -1,6 +1,6 @@
-{% from "./components/header/macros.njk" import headerMacro %}
-{% from "./components/nav/macros.njk" import breadcrumbsMacro, navMacro %}
-{% from "./components/utils/macros.njk" import classAttributeMacro %}
+{%- from "./components/header/macros.njk" import headerMacro -%}
+{%- from "./components/nav/macros.njk" import breadcrumbsMacro, navMacro -%}
+{%- from "./components/utils/macros.njk" import classAttributeMacro -%}
 
 <!doctype html>
 <html lang="{{ htmlLang | default('en') }}" {{- classAttributeMacro(htmlClass) -}}>
