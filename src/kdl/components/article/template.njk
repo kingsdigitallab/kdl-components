@@ -30,18 +30,22 @@
     {{ content | safe }}
   {% endif %}
 
-  {% if data.authors or data.date %}
+  {% if data.authors or data.date or options.footerHtml %}
     <footer>
-      {% if data.authors %}
-        by
-        {% for person in data.collections.people | filter(data.authors, "data.id") %}
-          {{- authorMacro(person) -}}
-          {%- if not loop.last -%},{%- endif -%}
-          {% endfor %}
-        {% endif %}
-        {% if data.date %}
-          on
-          {{ timeMacro(data.date) -}}
+      {% if options.footerHtml %}
+        {{ options.footerHtml | safe }}
+      {% else %}
+        {% if data.authors %}
+          by
+          {% for person in data.collections.people | filter(data.authors, "data.id") %}
+            {{- authorMacro(person) -}}
+            {%- if not loop.last -%},{%- endif -%}
+            {% endfor %}
+          {% endif %}
+          {% if data.date %}
+            on
+            {{ timeMacro(data.date) -}}
+          {% endif %}
         {% endif %}
       </footer>
     {% endif %}
