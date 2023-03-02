@@ -9,14 +9,26 @@
 {% block component %}
   <article {{- classAttributeMacro(options.class) -}}>
     <header>
-      {% if options.addLink %}
-        {% set html %}
-        <h2>{{ data.title | safe }}</h2>
-      {% endset %}
-      {{ linkMacro(data, { html: html }) }}
+      {% if data.feature and data.feature.image %}{{- imageMacro(data.feature) -}}{% endif %}
+      {% if options.addLink or options.headerHtml %}
+        <section>
+          {% if options.addLink %}
+            {% set html %}
+            <h2>{{ data.title | safe }}</h2>
+          {% endset %}
+          {{ linkMacro(data, { html: html }) }}
+        {% endif %}
+        {{ options.headerHtml | safe }}
+      </section>
     {% endif %}
-    {% if data.feature and data.feature.image %}{{- imageMacro(data.feature) -}}{% endif %}
   </header>
+
+  {% if options.html %}
+    {{ options.html | safe }}
+  {% else %}
+    {% set content = data[options.contentField] if options.contentField else data.content %}
+    {{ content | safe }}
+  {% endif %}
 
   {% if data.authors or data.date %}
     <footer>
@@ -34,11 +46,5 @@
       </footer>
     {% endif %}
 
-    {% if options.html %}
-      {{ options.html | safe }}
-    {% else %}
-      {% set content = data[options.contentField] if options.contentField else data.content %}
-      {{ content | safe }}
-    {% endif %}
   </article>
 {% endblock component %}
