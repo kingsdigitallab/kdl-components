@@ -27,7 +27,9 @@
     {{ options.html | safe }}
   {% else %}
     {% set content = data[options.contentField] if options.contentField else data.content %}
+    <article>
     {{ content | safe }}
+    </article>
   {% endif %}
 
   {% if data.authors or data.date or options.footerHtml %}
