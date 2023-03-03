@@ -7,7 +7,7 @@
 {% from "../utils/macros.njk" import classAttributeMacro %}
 
 {% block component %}
-  <article {{- classAttributeMacro(options.class) -}}>
+  <article {{ classAttributeMacro(options.class) -}}>
     <header>
       {% if data.feature and data.feature.image %}{{- imageMacro(data.feature) -}}{% endif %}
       {% if options.addLink or options.headerHtml %}

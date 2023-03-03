@@ -3,7 +3,7 @@
 {%- from "./components/utils/macros.njk" import classAttributeMacro -%}
 
 <!doctype html>
-<html lang="{{ htmlLang | default('en') }}" {{- classAttributeMacro(htmlClass) -}}>
+<html lang="{{ htmlLang | default('en') }}" {{ classAttributeMacro(htmlClass) -}}>
   <head>
     {# based on https://html5boilerplate.com/ #}
     <meta charset="utf-8">
@@ -36,12 +36,12 @@
     <meta name="theme-color"
           content="{{ metaThemeColour | default('#d16014') }}">
   </head>
-  <body {{- classAttributeMacro(bodyClass) -}}>
+  <body {{ classAttributeMacro(bodyClass) -}}>
     {% block bodyStart %}
     {% endblock bodyStart %}
 
     {% block header %}
-      <header {{- classAttributeMacro(headerClass) -}}>
+      <header {{ classAttributeMacro(headerClass) -}}>
         {% block headerStart %}
           {{ headerMacro({}) }}
         {% endblock headerStart %}
@@ -57,7 +57,7 @@
     {% endblock header %}
 
     {% block main %}
-      <main {{- classAttributeMacro(mainClass) -}} {%- if mainLang -%} lang="{{ mainLang }}" {%- endif -%}>
+      <main {{ classAttributeMacro(mainClass) -}} {%- if mainLang -%} lang="{{ mainLang }}" {%- endif -%}>
         {% block content %}
         {% endblock content %}
       </main>
