@@ -6,7 +6,12 @@
 {% block component %}
   {% set listTag = "ol" if options.ordered else "ul" %}
   <nav {{ classAttributeMacro(options.class) -}} aria-label="{{ data.title }}">
-    {{ visuallyHiddenMacro("h2", data.title) }}
+    {% if options.action %}
+      <input id="{{ options.action }}" type="checkbox">
+      <label role="button" for="{{ options.action }}">{{ data.title }}</label>
+    {% else %}
+      {{ visuallyHiddenMacro("h2", data.title) }}
+    {% endif %}
     <{{ listTag }}>
     {% for page in data.pages %}
       {{
