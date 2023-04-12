@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+const md = require("markdown-it")();
 const _ = require("lodash");
 
 function toLocaleDate(dateObj) {
@@ -15,7 +16,12 @@ function filter(collection, values, path) {
   );
 }
 
+function renderMd(string) {
+  return md.render(string);
+}
+
 module.exports = {
   toLocaleDate,
   filter,
+  renderMd,
 };
