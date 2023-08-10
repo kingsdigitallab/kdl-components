@@ -17,6 +17,10 @@ function filter(collection, values, path) {
 }
 
 function renderMd(string) {
+  if (!string) {
+    return "";
+  }
+
   return md.render(string);
 }
 
