@@ -3,7 +3,8 @@
     class="{{ options.activeClass | default('active') }}"
     {%- endif -%}>
   {%- if page.children.length and options.nested %}
-    {{ page.title }}
+    <input id="menu-{{ page.title | slugify }}" type="checkbox" hidden>
+    <label class="kdl-checkbox" for="menu-{{ page.title | slugify}}">{{ page.title }}</label>
     <{{ options.listTag }}>
     {%- for child in page.children -%}
       {{
