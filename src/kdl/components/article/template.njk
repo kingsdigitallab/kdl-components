@@ -14,43 +14,44 @@
         <section>
           {% if options.addLink %}
             {% set html %}
-            <h2>{{ data.title | safe }}</h2>
-          {% endset %}
-          {{ linkMacro(data, { html: html }) }}
-        {% endif %}
-        {{ options.headerHtml | safe }}
-      </section>
-    {% endif %}
-  </header>
+              <h2>{{ data.title | safe }}</h2>
+            {% endset %}
+            {{ linkMacro(data, { html: html }) }}
+          {% endif %}
+          {{ options.headerHtml | safe }}
+        </section>
+      {% endif %}
+    </header>
 
-  {% if options.html %}
-    {{ options.html | safe }}
-  {% else %}
-    {% set content = data[options.contentField] if options.contentField else data.content %}
-    <article>
-    {{ content | safe }}
+    {% if options.html %}
+      {{ options.html | safe }}
+    {% else %}
+      {% set content = data[options.contentField] if options.contentField else data.content %}
+      <article>
+        <div class="kdl-subtitle">{{ data.subtitle }}</div>
+        {{ content | safe }}
+      </article>
+    {% endif %}
+
+    {% if data.authors or data.date or options.footerHtml %}
+      <footer>
+        {% if options.footerHtml %}
+          {{ options.footerHtml | safe }}
+        {% else %}
+          {% if data.authors %}
+            by
+            {% for person in data.collections.people | filter(data.authors, "data.id") %}
+              {{- authorMacro(person) -}}
+              {%- if not loop.last -%},{%- endif -%}
+              {% endfor %}
+            {% endif %}
+            {% if data.date %}
+              on
+              {{ timeMacro(data.date) -}}
+            {% endif %}
+          {% endif %}
+        </footer>
+      {% endif %}
+
     </article>
-  {% endif %}
-
-  {% if data.authors or data.date or options.footerHtml %}
-    <footer>
-      {% if options.footerHtml %}
-        {{ options.footerHtml | safe }}
-      {% else %}
-        {% if data.authors %}
-          by
-          {% for person in data.collections.people | filter(data.authors, "data.id") %}
-            {{- authorMacro(person) -}}
-            {%- if not loop.last -%},{%- endif -%}
-            {% endfor %}
-          {% endif %}
-          {% if data.date %}
-            on
-            {{ timeMacro(data.date) -}}
-          {% endif %}
-        {% endif %}
-      </footer>
-    {% endif %}
-
-  </article>
-{% endblock component %}
+  {% endblock component %}
