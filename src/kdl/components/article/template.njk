@@ -28,7 +28,9 @@
     {% else %}
       {% set content = data[options.contentField] if options.contentField else data.content %}
       <article>
-        <div class="kdl-subtitle">{{ data.subtitle }}</div>
+        <div class="kdl-subtitle">
+          <span>{{ data.subtitle }}</span>
+        </div>
         {{ content | safe }}
       </article>
     {% endif %}
