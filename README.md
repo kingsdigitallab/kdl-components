@@ -13,15 +13,15 @@ Install [nunjucks](https://mozilla.github.io/nunjucks/) if not available in the 
 Configure `nunjucks`:
 
 ```javascript
-const kdlFilters = require("kdl-components/src/kdl/filters")
-const nunjucks = require("nunjucks");
+const kdlFilters = require("kdl-components/src/kdl/filters");
+const Nunjucks = require("nunjucks");
 
 const kdlComponentsPath = "../node_modules/kdl-components/src";
 
-const nunjucksEnvironment = new nunjucks.Environment([
-  # kdl components path
+const nunjucksEnvironment = new Nunjucks.Environment([
+  // kdl components path
   new Nunjucks.FileSystemLoader(kdlComponentsPath),
-  # project specific includes
+  // project specific includes
   new Nunjucks.FileSystemLoader("./src/_includes"),
 ]);
 ```
@@ -34,21 +34,21 @@ Add configuration to `.eleventy.js`:
 module.exports = (eleventyConfig) => {
   eleventyConfig.setLibrary("njk", nunjucksEnvironment);
 
-  # rebuild the project if the components change
+  // rebuild the project if the components change
   eleventyConfig.addWatchTarget(kdlComponentsPath);
 
-  # to add kdl-components default assets add a passthrough copy
+  // to add kdl-components default assets add a passthrough copy
   eleventyConfig.addPassthroughCopy({
     [`${kdlComponentsPath}/kdl/assets`]: "/assets",
     # project specific passthrough
     public: "/",
   });
 
-  # kdl components filters
+  // kdl components filters
   eleventyConfig.addFilter("toLocaleDate", kdlFilters.toLocaleDate);
   eleventyConfig.addFilter("filter", kdlFilters.filter);
 
-  # rest of 11ty configuration
+  // rest of 11ty configuration
 }
 ```
 
