@@ -44,7 +44,7 @@
             by
             {% for person in data.collections.people | filter(data.authors, "data.id") %}
               {{- authorMacro(person) -}}
-              {%- if not loop.last -%},{%- endif -%}
+              {%- if not loop.last -%}, {%- endif -%}
               {% endfor %}
             {% endif %}
             {% if data.date %}
