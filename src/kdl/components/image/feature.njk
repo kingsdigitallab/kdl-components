@@ -1,4 +1,10 @@
 <figure class="kdl-feature-image">
   <img src="{{ feature.image }}" alt="{{ feature.description }}">
-  <figcaption>{{ feature.description }}</figcaption>
+  <figcaption>
+    {% if feature.title %}
+      {{ feature.title }}
+    {% else %}
+      {{ feature.description }}
+    {% endif %}
+  </figcaption>
 </figure>
