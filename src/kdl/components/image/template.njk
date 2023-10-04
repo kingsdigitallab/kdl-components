@@ -1,10 +1,4 @@
 <figure class="kdl-image">
   <img src="{{ data.image }}" alt="{{ data.description }}">
-  <figcaption>
-    {% if data.title %}
-      {{ data.title }}
-    {% else %}
-      {{ data.description }}
-    {% endif %}
-  </figcaption>
+  {% if data.title %}<figcaption>{{ data.title }}</figcaption>{% endif %}
 </figure>
