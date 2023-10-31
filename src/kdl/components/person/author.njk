@@ -1,1 +1,7 @@
-<span class="author"><a href="{{ data.url }}">{{ data.data.name }}</a></span>
+<span class="author">
+  {%- if data.url -%}
+    <a href="{{ data.url }}">{{- data.data.name -}}</a>
+  {%- else -%}
+    {{- data.data.name -}}
+  {%- endif -%}
+</span>
