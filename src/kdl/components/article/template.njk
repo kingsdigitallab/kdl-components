@@ -42,18 +42,26 @@
         {% else %}
           {% if data.authors %}
             by
-            {% for person in data.collections.people | filter(data.authors, "data.id") %}
-              {{- authorMacro(person) -}}
-              {%- if not loop.last -%}, {%- endif -%}
-              {% endfor %}
-            {% endif %}
-            {% if data.date %}
-              on
-              {{ timeMacro(data.date) -}}
-            {% endif %}
+            {% for name in data.authors %}
+              {% set person = data.collections.people | filter(name, "data.id") %}
+              {% if person and person.length > 0 %}
+                {{- authorMacro(person[0]) -}}
+              {% else %}
+                {% set personName = { name: name } %}
+                {% set person = {data: personName} %}
+                {{- authorMacro(person) -}}
+              {% endif %}
+              {%- if not loop.last -%},
+              {% endif -%}
+            {% endfor %}
           {% endif %}
-        </footer>
-      {% endif %}
+          {% if data.date %}
+            on
+            {{ timeMacro(data.date) -}}
+          {% endif %}
+        {% endif %}
+      </footer>
+    {% endif %}
 
-    </article>
-  {% endblock component %}
+  </article>
+{% endblock component %}
