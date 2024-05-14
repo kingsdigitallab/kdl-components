@@ -1,4 +1,6 @@
 <figure class="kdl-feature-image">
-  <img src="{{ feature.image }}" alt="{{ feature.description }}">
+  <img loading="lazy"
+       src="{{ feature.image }}"
+       alt="{{ feature.description }}">
   {% if feature.title %}<figcaption>{{ feature.title }}</figcaption>{% endif %}
 </figure>
