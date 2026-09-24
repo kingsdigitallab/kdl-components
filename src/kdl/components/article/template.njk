@@ -51,8 +51,6 @@
                 {% set person = {data: personName} %}
                 {{- authorMacro(person) -}}
               {% endif %}
-              {%- if not loop.last -%},
-              {% endif -%}
             {% endfor %}
           {% endif %}
           {% if data.date %}
